@@ -1,4 +1,3 @@
-
 :root {
   --bg: #f6f8fc;
   --card: #fff;
@@ -239,13 +238,17 @@ nav .wrap {
   display: grid;
   place-items: center;
   border: 5px solid var(--bg);
+  position: relative;
 }
 
 .frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none;
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .frame svg {
