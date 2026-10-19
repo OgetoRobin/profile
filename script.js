@@ -182,32 +182,6 @@ function nav() {
 }
 addEventListener('hashchange', nav);
 nav();
-/* photo upload */
-function show(src) {
-    $('#pic').src = src;
-    $('#pic').style.display = 'block';
-    $('#ph').style.display = 'none';
-}
-const saved = gs('photo');
-if (saved)
-    show(saved);
-$('#up').onclick = () => $('#file').click();
-$('#file').onchange = e => {
-    const f = e.target.files[0];
-    if (!f)
-        return;
-    const im = new Image(), url = URL.createObjectURL(f);
-    im.onload = () => {
-        const c = document.createElement('canvas'), s = Math.min(im.width, im.height), S = 500;
-        c.width = c.height = S;
-        c.getContext('2d').drawImage(im, (im.width - s) / 2, (im.height - s) / 2, s, s, 0, 0, S, S);
-        const d = c.toDataURL('image/jpeg', .85);
-        show(d);
-        ss('photo', d);
-        URL.revokeObjectURL(url);
-    };
-    im.src = url;
-};
 /* contact block on every page */
 const CI = [
     ['mailto:you@example.com', 'Email', '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/>'],
