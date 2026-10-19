@@ -11,7 +11,7 @@
 <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs></svg>
 
 <nav><div class="wrap">
-<a class="brand" href="#/home"><svg width="34" height="34" viewBox="0 0 40 40"><rect width="40" height="40" rx="10" fill="url(#g)"/><path d="M14 13l-7 7 7 7M26 13l7 7-7 7M22 11l-4 18" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Robin Ogeto<span style="color:var(--acc)">.dev</span></a>
+<a class="brand" href="#/home"><svg width="34" height="34" viewBox="0 0 40 40"><rect width="40" height="40" rx="10" fill="url(#g)"/><path d="M14 13l-7 7 7 7M26 13l7 7-7 7M22 11l-4 18" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>YourName<span style="color:var(--acc)">.dev</span></a>
 <div class="links" id="links"></div>
 <div class="auth" id="auth"></div>
 </div></nav>
@@ -110,6 +110,48 @@
 <div class="tabs" id="tabs" role="navigation" aria-label="Main"></div>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="mbox"><div class="mi" id="mi"></div><h3 id="mt"></h3><p id="mx"></p><button class="btn p" id="mb" style="width:100%">Got it</button></div></div>
 <div id="load" role="status" aria-live="polite"><div class="spin"></div><div id="lt"></div></div>
+<div class="notice" id="notice" role="dialog" aria-modal="true" aria-labelledby="nt" aria-describedby="nd">
+  <div class="nbox">
+    <button class="nx" id="nclose" type="button" aria-label="Close notice">&times;</button>
+
+    <div class="nhead">
+      <div class="nicon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></div>
+      <span class="npill">Under development &middot; Beta</span>
+      <h2 id="nt">Dear Customer,</h2>
+      <p class="nlead" id="nd">Thank you for visiting! This website is still under development, so some parts may be incomplete or change as I keep improving it.</p>
+    </div>
+
+    <div class="nbody">
+      <h3>Current status</h3>
+      <ul class="nstatus">
+        <li>Responsive design</li>
+        <li>Page navigation</li>
+        <li>Demo login &amp; register</li>
+        <li class="wip">Secure server &amp; database</li>
+        <li class="wip">Real project content</li>
+        <li class="wip">Testing &amp; security checks</li>
+      </ul>
+
+      <h3>What is happening behind the scenes</h3>
+      <ul class="ntech">
+        <li><b>Front-end:</b> the site is built with HTML, CSS and JavaScript. Layouts, animations and the mobile view are still being tested on different devices and browsers.</li>
+        <li><b>Accounts:</b> Login and Register run in demo mode. Your details are saved only in your own browser (local storage), not on a server, so they will not follow you to another device or browser.</li>
+        <li><b>Coming next:</b> a secure back end using PHP and MySQL, with hashed passwords, protected sessions and server-side validation.</li>
+      </ul>
+      <p class="nwarn"><b>Please note:</b> while accounts are in demo mode, do not use a password that you use on other websites.</p>
+
+      <h3>Your feedback matters</h3>
+      <p>Found a bug, a layout problem, or have an idea? Tell me which page you were on, your device and browser, and what happened. Every message helps me build a better final website.</p>
+    </div>
+
+    <div class="nact">
+      <a class="btn p" href="mailto:you@example.com?subject=Website%20feedback&amp;body=Hi%20Robin%2C%0A%0APage%3A%0ADevice%20%26%20browser%3A%0AWhat%20happened%20or%20my%20idea%3A%0A"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>Email feedback</a>
+      <a class="btn wa" href="https://wa.me/254700000000?text=Hi%20Robin%2C%20here%20is%20my%20feedback%20on%20your%20website%3A%20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.6-4.8A9 9 0 1112 21a9 9 0 01-4.4-1.2z"/><path d="M9 9c0 3 3 6 6 6l1-2-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"/></svg>WhatsApp</a>
+      <button class="btn full" id="nok" type="button">Continue to site</button>
+    </div>
+  </div>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
