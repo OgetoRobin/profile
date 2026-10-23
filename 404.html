@@ -1,1 +1,202 @@
-loading............
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7ff">
+  <title>Page in progress | Student Tech Help</title>
+  <style>
+    :root {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: #17233d;
+      background: #f4f7ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(ellipse at 12% 14%, #dfe8ff, transparent 35%),
+        radial-gradient(ellipse at 90% 90%, #e8e2ff, transparent 32%),
+        #f4f7ff;
+    }
+
+    .card {
+      width: min(100%, 620px);
+      padding: clamp(30px, 7vw, 62px);
+      text-align: center;
+      background: #ffffffed;
+      border: 1px solid white;
+      border-radius: 28px;
+      box-shadow: 0 24px 70px #23396e1f;
+      animation: rise .6s ease both;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+      font-weight: 750;
+    }
+
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      color: white;
+      background: linear-gradient(145deg, #5275ff, #714ddd);
+      border-radius: 12px;
+      font-size: 22px;
+    }
+
+    .art {
+      width: min(100%, 260px);
+      margin: 0 auto 22px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #345be8;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 7vw, 3.1rem);
+      line-height: 1.08;
+      letter-spacing: -.055em;
+    }
+
+    .message {
+      max-width: 440px;
+      margin: 17px auto 0;
+      color: #64718a;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 29px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 13px;
+      font: inherit;
+      font-size: .92rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .16s, background .16s;
+      cursor: pointer;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button:focus-visible {
+      outline: 3px solid #9aabff;
+      outline-offset: 3px;
+    }
+
+    .primary {
+      color: white;
+      background: #345be8;
+      box-shadow: 0 8px 18px #345be83b;
+    }
+
+    .primary:hover { background: #2346c7; }
+
+    .secondary {
+      color: #17233d;
+      background: white;
+      border-color: #e5eaf5;
+    }
+
+    .footer {
+      margin: 34px 0 0;
+      padding-top: 20px;
+      color: #8993a7;
+      border-top: 1px solid #e5eaf5;
+      font-size: .83rem;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-labelledby="title">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">ϟ</span>
+      <span>Student Tech Help</span>
+    </div>
+
+    <svg class="art" viewBox="0 0 280 190" role="img" aria-label="Laptop being repaired">
+      <ellipse cx="140" cy="166" rx="103" ry="12" fill="#e9edfa"/>
+      <path d="M80 45a9 9 0 0 1 9-9h103a9 9 0 0 1 9 9v71H80V45Z" fill="#253553"/>
+      <path d="M87 46a3 3 0 0 1 3-3h101a3 3 0 0 1 3 3v61H87V46Z" fill="#dce7ff"/>
+      <path d="m130 61-15 22h13l-4 17 21-27h-14l6-12h-7Z" fill="#5275ff"/>
+      <path d="M61 117h159l12 20c2 4-1 8-6 8H56c-5 0-8-4-6-8l11-20Z" fill="#9eabc2"/>
+      <path d="M64 121h153l7 12H57l7-12Z" fill="#c6cfdf"/>
+      <circle cx="214" cy="54" r="24" fill="#fff0d5"/>
+      <path d="M214 41v15m0 8v.2" stroke="#c57b22" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+
+    <p class="eyebrow">404 · Page unavailable</p>
+    <h1 id="title">This page is being worked on</h1>
+    <p class="message">
+      We’re making updates to this part of the site. It may be under maintenance
+      or the link may have changed. In the meantime, our student tech team is
+      here if you need a hand.
+    </p>
+
+    <div class="actions">
+      <a class="button primary" id="home" href="index.html">Back to home</a>
+      <a class="button secondary" id="contact" href="mailto:hello@campustechhelp.example">
+        Contact student tech support
+      </a>
+    </div>
+
+    <p class="footer">Need help with a device, software, or your studies? We’ve got you.</p>
+  </main>
+
+  <script>
+    // Replace these sample destinations with your real website details.
+    const siteSettings = {
+      homeUrl: "index.html",
+      supportEmail: "hello@campustechhelp.example"
+    };
+
+    document.querySelector("#home").href = siteSettings.homeUrl;
+    document.querySelector("#contact").href =
+      `mailto:${siteSettings.supportEmail}?subject=${encodeURIComponent("Help with a website page")}`;
+  </script>
+</body>
+</html>
