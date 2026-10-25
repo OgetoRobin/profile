@@ -1,0 +1,235 @@
+/* auth.css - Login and Register pages: forms, popups and the loading spinner */
+
+.auth-box {
+  max-width: 430px;
+  margin: 10px auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 24px 60px -34px var(--acc);
+}
+
+.auth-box .logo {
+  margin: 0 auto 12px;
+}
+
+.auth-box h2 {
+  text-align: center;
+  font-size: 28px;
+}
+
+.auth-box .lead {
+  text-align: center;
+  margin: 0 auto 20px;
+  font-size: 14px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 14px 0 5px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px Inter,sans-serif;
+}
+
+input:focus {
+  outline: 2px solid var(--acc);
+  border-color: transparent;
+}
+
+.msg {
+  min-height: 20px;
+  font-size: 13px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.msg.e {
+  color: var(--err);
+}
+
+.msg.o {
+  color: var(--ok);
+}
+
+.alt {
+  text-align: center;
+  font-size: 14px;
+  color: var(--mute);
+  margin-top: 16px;
+}
+
+.alt a {
+  color: var(--acc);
+  font-weight: 500;
+}
+
+.note {
+  font-size: 12px;
+  color: var(--mute);
+  text-align: center;
+  margin-top: 14px;
+  padding: 10px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(8,12,28,.55);
+  backdrop-filter: blur(4px);
+  display: none;
+  place-items: center;
+  padding: 20px;
+}
+
+.modal.on {
+  display: grid;
+}
+
+.mbox {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 30px 24px 24px;
+  max-width: 370px;
+  width: 100%;
+  text-align: center;
+  animation: pop .35s cubic-bezier(.2,1.4,.4,1);
+}
+
+.mi {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  display: grid;
+  place-items: center;
+}
+
+.mi.ok {
+  background: var(--ok);
+}
+
+.mi.err {
+  background: var(--err);
+}
+
+.mi svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mbox h3 {
+  font-size: 22px;
+}
+
+.mbox p {
+  color: var(--mute);
+  margin: 8px 0 20px;
+  font-size: 15px;
+}
+
+#load {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: color-mix(in srgb,var(--bg) 82%,transparent);
+  backdrop-filter: blur(6px);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+#load.on {
+  display: flex;
+}
+
+.spin {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 5px solid var(--line);
+  border-top-color: var(--acc);
+  border-right-color: var(--acc2);
+  animation: r .8s linear infinite;
+}
+
+@keyframes r {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#lt {
+  font-weight: 500;
+}
+
+#lt:after {
+  content: "";
+  animation: d 1.2s steps(4,end) infinite;
+}
+
+@keyframes d {
+  0% {
+    content: "";
+  }
+
+  25% {
+    content: ".";
+  }
+
+  50% {
+    content: "..";
+  }
+
+  75% {
+    content: "...";
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .mbox {
+    animation: none;
+  }
+}
+
+@media(max-width:780px) {
+  .auth-box {
+    padding: 24px 18px;
+  }
+}
+
+.auth-box form .btn {
+  margin-top: 22px;
+}
+
+.mi.ok .crs,
+.mi.err .chk {
+  display: none;
+}
+
+input:user-invalid {
+  border-color: var(--err);
+}
