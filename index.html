@@ -44,6 +44,8 @@
   @keyframes shine { from { background-position: 200% 0; } to { background-position: -200% 0; } }
   .loader-hint { margin-top: 14px; font-size: .9rem; color: var(--muted); min-height: 1.2em; }
 
+  .skip { display: inline-block; margin-top: 10px; font-size: .9rem; color: var(--text); text-underline-offset: 3px; }
+
   @media (prefers-reduced-motion: reduce) {
     .bar-fill::after { animation: none; }
     #loader { transition-duration: .01s; }
@@ -66,10 +68,15 @@
     </div>
     <div class="bar-track"><div class="bar-fill" id="fill"></div></div>
     <p class="loader-hint" id="hint">Getting things ready</p>
+    <a id="skip" class="skip" href="index1.html">Skip to website</a>
   </div>
 </div>
 
 <!-- Your website content goes here -->
+<main>
+  <h1>Welcome to my website</h1>
+  <p>The loading bar has finished and the page is ready. Replace this section with your own content.</p>
+</main>
 
 <script>
 (function () {
@@ -80,6 +87,18 @@
   var percentEl = document.getElementById('percent');
   var hint = document.getElementById('hint');
   var hints = [[0, 'Getting things ready'], [35, 'Loading content'], [70, 'Almost there'], [95, 'Done']];
+
+  var skip = document.getElementById('skip');
+  skip.href = REDIRECT_URL;
+
+  var redirected = false;
+  function goHome() {
+    if (redirected) return;
+    redirected = true;
+    window.location.replace(REDIRECT_URL);
+  }
+  // Safety net: redirect even if the animation is paused (e.g. background tab)
+  setTimeout(goHome, MIN_TIME + 8000);
 
   var start = performance.now();
   var progress = 0;
@@ -105,7 +124,7 @@
       percentEl.textContent = '100%';
       setTimeout(function () {
         loader.classList.add('done');
-        setTimeout(function () { window.location.replace(index1.html); }, 600);
+        setTimeout(goHome, 600);
       }, 350);
       return;
     }
