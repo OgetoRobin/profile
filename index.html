@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loading Bar Animation</title>
+<style>
+  :root {
+    --bg: linear-gradient(135deg, #1d4ed8 0%, #0e8f9c 50%, #10b981 100%);
+    --track: rgba(255, 255, 255, .22);
+    --fill-a: #cfe4ff;
+    --fill-b: #d3ffe9;
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, .78);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #f5f7fb; color: #14213a; }
+
+  /* ---------- Loader ---------- */
+  #loader {
+    position: fixed; inset: 0; z-index: 9999;
+    display: grid; place-items: center; padding: 24px;
+    background: var(--bg); color: var(--text);
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  #loader.done { opacity: 0; visibility: hidden; }
+  .loader-box { width: min(420px, 100%); }
+  .loader-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+  .loader-label { font-size: 1rem; color: var(--muted); letter-spacing: .02em; }
+  .loader-percent { font-size: 2.6rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+  .bar-track { height: 10px; background: var(--track); border-radius: 999px; overflow: hidden; }
+  .bar-fill {
+    position: relative; height: 100%; width: 0; border-radius: 999px;
+    background: linear-gradient(90deg, var(--fill-a), var(--fill-b));
+    box-shadow: 0 0 14px rgba(255, 255, 255, .55);
+  }
+  /* moving shine across the filled part */
+  .bar-fill::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(14,143,156,.35) 50%, transparent 70%);
+    background-size: 200% 100%;
+    animation: shine 1.4s linear infinite;
+  }
+  @keyframes shine { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+  .loader-hint { margin-top: 14px; font-size: .9rem; color: var(--muted); min-height: 1.2em; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bar-fill::after { animation: none; }
+    #loader { transition-duration: .01s; }
+  }
+
+  /* ---------- Demo page content (replace with your site) ---------- */
+  main { max-width: 720px; margin: 0 auto; padding: 96px 24px; }
+  main h1 { font-size: 2.2rem; margin-bottom: 12px; }
+  main p { line-height: 1.6; color: #44536f; }
+</style>
+</head>
+<body>
+
+<!-- Loader: place right after <body> on your site -->
+<div id="loader" role="progressbar" aria-label="Page loading" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+  <div class="loader-box">
+    <div class="loader-top">
+      <span class="loader-label">Loading your page</span>
+      <span class="loader-percent" id="percent">0%</span>
+    </div>
+    <div class="bar-track"><div class="bar-fill" id="fill"></div></div>
+    <p class="loader-hint" id="hint">Getting things ready</p>
+  </div>
+</div>
+
+<!-- Your website content goes here -->
+<main>
+  <h1>Welcome to my website</h1>
+  <p>The loading bar has finished and the page is ready. Replace this section with your own content.</p>
+</main>
+
+<script>
+(function () {
+  var MIN_TIME = 4500;            // shortest time (ms) the loader stays visible
+  var REDIRECT_URL = 'index.html'; // page to open when loading finishes
+  var loader = document.getElementById('loader');
+  var fill = document.getElementById('fill');
+  var percentEl = document.getElementById('percent');
+  var hint = document.getElementById('hint');
+  var hints = [[0, 'Getting things ready'], [35, 'Loading content'], [70, 'Almost there'], [95, 'Done']];
+
+  var start = performance.now();
+  var progress = 0;
+  var pageLoaded = document.readyState === 'complete';
+  window.addEventListener('load', function () { pageLoaded = true; });
+
+  function tick(now) {
+    // Move quickly at first, slow down near 90%, and only finish once the page has really loaded
+    var cap = pageLoaded && now - start >= MIN_TIME ? 100 : 90;
+    progress += (cap - progress) * 0.012 + 0.03;
+    if (progress > cap) progress = cap;
+
+    var shown = Math.floor(progress);
+    fill.style.width = progress + '%';
+    percentEl.textContent = shown + '%';
+    loader.setAttribute('aria-valuenow', shown);
+    for (var i = hints.length - 1; i >= 0; i--) {
+      if (shown >= hints[i][0]) { hint.textContent = hints[i][1]; break; }
+    }
+
+    if (progress >= 99.5) {
+      fill.style.width = '100%';
+      percentEl.textContent = '100%';
+      setTimeout(function () {
+        loader.classList.add('done');
+        setTimeout(function () { window.location.replace(index1.html); }, 600);
+      }, 350);
+      return;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
